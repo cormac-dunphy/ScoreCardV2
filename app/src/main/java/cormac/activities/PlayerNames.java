@@ -20,15 +20,12 @@ import java.util.Map;
 import models.Player;
 
 public class PlayerNames extends Base {
-    Base base = new Base();
-    public String p1Name, p2Name, p3Name, p4Name;
-    public static HashMap<String, String> PlayerMap = new HashMap<String, String>();
 
-    //trying to use player model in hashmap
+    //Setting the variables to be used in the class
+    public String p1Name, p2Name, p3Name, p4Name;
     public static HashMap<Integer, Player> playerHashMap = new HashMap<>();
     public List<String> playerList = new ArrayList<>();
     public String firstName;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,39 +34,15 @@ public class PlayerNames extends Base {
         onButtonPressed();
     }
 
-    public void newPlayers() {
-        EditText player1Name = (EditText) findViewById(R.id.player1Name);
-        EditText player2Name = (EditText) findViewById(R.id.player2Name);
-        EditText player3Name = (EditText) findViewById(R.id.player3Name);
-        EditText player4Name = (EditText) findViewById(R.id.player4Name);
-
-        p1Name = player1Name.getText().toString();
-        p2Name = player2Name.getText().toString();
-        p3Name = player3Name.getText().toString();
-        p4Name = player4Name.getText().toString();
-
-
-        PlayerMap.put("1", p1Name);
-        PlayerMap.put("2", p2Name);
-        PlayerMap.put("3", p3Name);
-        PlayerMap.put("4", p4Name);
-
-        playerList.add(p1Name);
-        playerList.add(p2Name);
-        playerList.add(p3Name);
-        playerList.add(p4Name);
-
-    }
-
     public void onButtonPressed() {
         Button startGameButton = (Button) findViewById(R.id.startGameButton);
 
         startGameButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //newPlayers();
                 newPlayer();
 
+                //checking if all names are entered and showing a toast if is not entered
                 if (p1Name.trim().length() <= 0) {
                     Toast.makeText(PlayerNames.this, "Enter Missing Name(s)", Toast.LENGTH_LONG).show();
                 } else if (p2Name.trim().length() <= 0) {
@@ -88,7 +61,7 @@ public class PlayerNames extends Base {
         });
     }
 
-    //trying to use the player model
+    //getting the players names from the edit texts and assigning them variables and adding them to array with an id
     public void newPlayer() {
 
         EditText player1Name = (EditText) findViewById(R.id.player1Name);
@@ -106,18 +79,12 @@ public class PlayerNames extends Base {
         playerList.add(p3Name);
         playerList.add(p4Name);
 
-        //Toast.makeText(this, p1Name, Toast.LENGTH_SHORT).show();
-
         for (int i = 0; i < playerList.size(); i++)
         {
             firstName = String.valueOf(playerList.get(i)).trim();
-            //Toast.makeText(this, firstName, Toast.LENGTH_SHORT).show();
             int id = playerHashMap.size() + 1;
             Player player = new Player(firstName);
             playerHashMap.put(id, player);
-            //Toast.makeText(this, String.valueOf(player.firstName), Toast.LENGTH_SHORT).show();
         }
-        //Toast.makeText(this, String.valueOf(playerHashMap), Toast.LENGTH_SHORT).show();
-        //Toast.makeText(this, String.valueOf(playerHashMap.size()), Toast.LENGTH_SHORT).show();
     }
 }

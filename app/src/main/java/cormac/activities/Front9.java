@@ -27,18 +27,15 @@ public class Front9 extends Base {
     public String s1p4,s2p4,s3p4,s4p4,s5p4,s6p4,s7p4,s8p4,s9p4;
     public List<String> scores = new ArrayList<>();
 
-    //trying to use the player model
-    public String firstPlayerName2, secondPlayerName2, thirdPlayerName2, fourthPlayerName2;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_front9);
-        //showPlayerNames();
-        showPlayerNames2();
+        showPlayerNames();
         onFinishGameButtonPressed();
     }
 
+    //when button is pressed get the scores entered and check if any value edit text is null
     public void onFinishGameButtonPressed() {
         Button finishGameButton = (Button) findViewById(R.id.finishGameButton);
 
@@ -62,6 +59,8 @@ public class Front9 extends Base {
         });
     }
 
+    //gets entries from edit texts and puts them into an array then iterates through the array
+    //pops up a toast if any element in the array is null
     public boolean getScores()
     {
         EditText score1P1 = (EditText) findViewById(R.id.score1P1);
@@ -194,7 +193,7 @@ public class Front9 extends Base {
         }
         return true;
     }
-
+//gets the int value of the entered strings and adds each players score
     public void calculateScores()
     {
         int n1p1, n2p1, n3p1, n4p1, n5p1, n6p1, n7p1, n8p1, n9p1;
@@ -261,25 +260,8 @@ public class Front9 extends Base {
 
         scoreList.add(front9ScoreP4);
     }
-
-    public void showPlayerNames() {
-        TextView player1Name = (TextView) findViewById(R.id.player1);
-        TextView player2Name = (TextView) findViewById(R.id.player2);
-        TextView player3Name = (TextView) findViewById(R.id.player3);
-        TextView player4Name = (TextView) findViewById(R.id.player4);
-
-        firstPlayerName = playerNames.PlayerMap.get("1");
-        secondPlayerName = playerNames.PlayerMap.get("2");
-        thirdPlayerName = playerNames.PlayerMap.get("3");
-        fourthPlayerName = playerNames.PlayerMap.get("4");
-
-        player1Name.setText(firstPlayerName);
-        player2Name.setText(secondPlayerName);
-        player3Name.setText(thirdPlayerName);
-        player4Name.setText(fourthPlayerName);
-    }
-
-    public void showPlayerNames2()
+//shows player names from previous activity
+    public void showPlayerNames()
     {
         TextView player1Name = (TextView) findViewById(R.id.player1);
         TextView player2Name = (TextView) findViewById(R.id.player2);
@@ -291,17 +273,15 @@ public class Front9 extends Base {
         Player player3 = playerNames.playerHashMap.get(3);
         Player player4 = playerNames.playerHashMap.get(4);
 
-        firstPlayerName2 = player1.firstName;
-        secondPlayerName2 = player2.firstName;
-        thirdPlayerName2 = player3.firstName;
-        fourthPlayerName2 = player4.firstName;
+        firstPlayerName = player1.firstName;
+        secondPlayerName = player2.firstName;
+        thirdPlayerName = player3.firstName;
+        fourthPlayerName = player4.firstName;
 
-        player1Name.setText(firstPlayerName2);
-        player2Name.setText(secondPlayerName2);
-        player3Name.setText(thirdPlayerName2);
-        player4Name.setText(fourthPlayerName2);
-
-        //Toast.makeText(this, String.valueOf(player1), Toast.LENGTH_SHORT).show();
+        player1Name.setText(firstPlayerName);
+        player2Name.setText(secondPlayerName);
+        player3Name.setText(thirdPlayerName);
+        player4Name.setText(fourthPlayerName);
     }
 
 }

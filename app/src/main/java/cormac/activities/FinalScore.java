@@ -20,7 +20,7 @@ public class FinalScore extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_final_score);
-        showPlayerNames2();
+        showPlayerNames();
         showScores();
         onNewGameButtonPressed();
     }
@@ -43,6 +43,8 @@ public class FinalScore extends AppCompatActivity {
         finalScoreP4Name.setText(fourthPlayerName);
     }
 */
+
+//shows each players score
     public void showScores()
     {
         TextView finalScoreP1 = (TextView) findViewById(R.id.finalScoreP1);
@@ -61,6 +63,7 @@ public class FinalScore extends AppCompatActivity {
         finalScoreP4.setText(String.valueOf(fourthPlayerScore));
     }
 
+    //when new game starts clear the data from all hashmaps/arrays
     public void onNewGameButtonPressed()
     {
         Button newGameButton = (Button) findViewById(R.id.newGameButton);
@@ -75,8 +78,8 @@ public class FinalScore extends AppCompatActivity {
             }
         });
     }
-
-    public void showPlayerNames2()
+//show players names
+    public void showPlayerNames()
     {
         TextView finalScoreP1Name = (TextView) findViewById(R.id.finalScoreP1Name);
         TextView finalScoreP2Name = (TextView) findViewById(R.id.finalScoreP2Name);
