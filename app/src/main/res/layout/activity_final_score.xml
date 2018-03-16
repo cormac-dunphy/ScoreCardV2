@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#e8fffc"
+    tools:context="cormac.activities.FinalScore">
+
+    <TextView
+        android:id="@+id/finalScoreTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="25dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/finalScoreTitle"
+        android:textSize="24sp"
+        tools:layout_editor_absoluteX="163dp"
+        tools:layout_editor_absoluteY="37dp" />
+
+    <TableLayout
+        android:id="@+id/finalScoreTable"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/finalScoreTitle"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="350dp">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/finalScoreP1Name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:text="@string/finalScoreP1Name" />
+
+            <TextView
+                android:id="@+id/finalScoreP2Name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:text="@string/finalScoreP2Name" />
+
+            <TextView
+                android:id="@+id/finalScoreP3Name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:text="@string/finalScoreP3Name" />
+
+            <TextView
+                android:id="@+id/finalScoreP4Name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:text="@string/finalScoreP4Name" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/finalScoreP1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/finalScoreP1"
+                android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/finalScoreP2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/finalScoreP2"
+                android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/finalScoreP3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/finalScoreP3"
+                android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/finalScoreP4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/finalScoreP4"
+                android:gravity="center"/>
+        </TableRow>
+
+    </TableLayout>
+
+    <Button
+        android:id="@+id/newGameButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/finalScoreTable"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:layout_alignParentBottom="true"
+        android:text="@string/newGameButton" />
+
+</RelativeLayout>
