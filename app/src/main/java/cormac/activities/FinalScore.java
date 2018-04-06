@@ -13,8 +13,10 @@ public class FinalScore extends AppCompatActivity {
 
     PlayerNames playerNames = new PlayerNames();
     Front9 front9 = new Front9();
+    EnterCourse enterCourse = new EnterCourse();
     String firstPlayerName, secondPlayerName, thirdPlayerName, fourthPlayerName;
     int firstPlayerScore, secondPlayerScore, thirdPlayerScore, fourthPlayerScore;
+    int firstPlayerPar, secondPlayerPar, thirdPlayerPar, fourthPlayerPar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +24,7 @@ public class FinalScore extends AppCompatActivity {
         setContentView(R.layout.activity_final_score);
         showPlayerNames();
         showScores();
+        showPars();
         onNewGameButtonPressed();
     }
 /*
@@ -63,6 +66,25 @@ public class FinalScore extends AppCompatActivity {
         finalScoreP4.setText(String.valueOf(fourthPlayerScore));
     }
 
+    //show pars
+    public void showPars()
+    {
+        TextView finalParP1 = (TextView) findViewById(R.id.finalParP1);
+        TextView finalParP2 = (TextView) findViewById(R.id.finalParP2);
+        TextView finalParP3 = (TextView) findViewById(R.id.finalParP3);
+        TextView finalParP4 = (TextView) findViewById(R.id.finalParP4);
+
+        firstPlayerPar = front9.parList.get(0);
+        secondPlayerPar = front9.parList.get(1);
+        thirdPlayerPar = front9.parList.get(2);
+        fourthPlayerPar = front9.parList.get(3);
+
+        finalParP1.setText(String.valueOf(firstPlayerPar));
+        finalParP2.setText(String.valueOf(secondPlayerPar));
+        finalParP3.setText(String.valueOf(thirdPlayerPar));
+        finalParP4.setText(String.valueOf(fourthPlayerPar));
+    }
+
     //when new game starts clear the data from all hashmaps/arrays
     public void onNewGameButtonPressed()
     {
@@ -73,7 +95,8 @@ public class FinalScore extends AppCompatActivity {
                 playerNames.playerHashMap.clear();
                 front9.scoreList.clear();
                 front9.scores.clear();
-                Intent newGameButtonPressed = new Intent(FinalScore.this, PlayerNames.class);
+                enterCourse.courseHashMap.clear();
+                Intent newGameButtonPressed = new Intent(FinalScore.this, Start.class);
                 startActivity(newGameButtonPressed);
             }
         });

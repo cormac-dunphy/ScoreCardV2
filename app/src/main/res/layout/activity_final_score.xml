@@ -30,70 +30,108 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center">
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/finalScorePlayers"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:text="@string/finalScorePlayers" />
+
 
             <TextView
                 android:id="@+id/finalScoreP1Name"
-                android:layout_width="wrap_content"
+                android:layout_width="70dp"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="15dp"
                 android:text="@string/finalScoreP1Name" />
 
             <TextView
                 android:id="@+id/finalScoreP2Name"
-                android:layout_width="wrap_content"
+                android:layout_width="70dp"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="15dp"
                 android:text="@string/finalScoreP2Name" />
 
             <TextView
                 android:id="@+id/finalScoreP3Name"
-                android:layout_width="wrap_content"
+                android:layout_width="70dp"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="15dp"
                 android:text="@string/finalScoreP3Name" />
 
             <TextView
                 android:id="@+id/finalScoreP4Name"
-                android:layout_width="wrap_content"
+                android:layout_width="70dp"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="15dp"
                 android:text="@string/finalScoreP4Name" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center">
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/finalScoreScore"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:text="@string/finalScoreScore" />
 
             <TextView
                 android:id="@+id/finalScoreP1"
-                android:layout_width="wrap_content"
+                android:layout_width="70dp"
                 android:layout_height="wrap_content"
-                android:text="@string/finalScoreP1"
-                android:gravity="center"/>
+                android:text="@string/finalScoreP1" />
 
             <TextView
                 android:id="@+id/finalScoreP2"
-                android:layout_width="wrap_content"
+                android:layout_width="70dp"
                 android:layout_height="wrap_content"
-                android:text="@string/finalScoreP2"
-                android:gravity="center"/>
+                android:text="@string/finalScoreP2" />
 
             <TextView
                 android:id="@+id/finalScoreP3"
-                android:layout_width="wrap_content"
+                android:layout_width="70dp"
                 android:layout_height="wrap_content"
-                android:text="@string/finalScoreP3"
-                android:gravity="center"/>
+                android:text="@string/finalScoreP3" />
 
             <TextView
                 android:id="@+id/finalScoreP4"
-                android:layout_width="wrap_content"
+                android:layout_width="70dp"
                 android:layout_height="wrap_content"
-                android:text="@string/finalScoreP4"
-                android:gravity="center"/>
+                android:text="@string/finalScoreP4" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/finalScorePar"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:text="@string/finalScorePar" />
+
+            <TextView
+                android:id="@+id/finalParP1"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:text="@string/finalParP1" />
+
+            <TextView
+                android:id="@+id/finalParP2"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:text="@string/finalParP2" />
+
+            <TextView
+                android:id="@+id/finalParP3"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:text="@string/finalParP3" />
+
+            <TextView
+                android:id="@+id/finalParP4"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:text="@string/finalParP4" />
         </TableRow>
 
     </TableLayout>
@@ -102,10 +140,18 @@
         android:id="@+id/newGameButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_below="@id/finalScoreTable"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="10dp"
-        android:layout_alignParentBottom="true"
-        android:text="@string/newGameButton" />
+        android:text="@string/backToMenuButton" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        app:srcCompat="@drawable/golfcourse" />
 
 </RelativeLayout>

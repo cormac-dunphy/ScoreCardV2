@@ -3,23 +3,39 @@ package cormac.activities;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
+import models.Course;
+import models.Game;
 import models.Player;
 
-public class Front9 extends Base {
+public class Front9 extends EnterCourse {
 
+    //get date
+    //Date date = Calendar.getInstance().getTime();
+    //String dateString = String.valueOf(date);
+
+    String date = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
+    public String courseName;
     public static List<Integer> scoreList = new ArrayList<>();
+    public static List<Integer> parList = new ArrayList<>();
     PlayerNames playerNames = new PlayerNames();
+    EnterCourse enterCourse = new EnterCourse();
     String firstPlayerName, secondPlayerName, thirdPlayerName, fourthPlayerName;
     public String s1p1,s2p1,s3p1,s4p1,s5p1,s6p1,s7p1,s8p1,s9p1;
     public String s1p2,s2p2,s3p2,s4p2,s5p2,s6p2,s7p2,s8p2,s9p2;
@@ -27,11 +43,18 @@ public class Front9 extends Base {
     public String s1p4,s2p4,s3p4,s4p4,s5p4,s6p4,s7p4,s8p4,s9p4;
     public List<String> scores = new ArrayList<>();
 
+    //database
+    public DatabaseHelper myDb;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        myDb = new DatabaseHelper(this);
         setContentView(R.layout.activity_front9);
         showPlayerNames();
+        getCourseData();
+        showCourseTitle();
+        //getCourseData();
         onFinishGameButtonPressed();
     }
 
@@ -193,7 +216,10 @@ public class Front9 extends Base {
         }
         return true;
     }
-//gets the int value of the entered strings and adds each players score
+
+
+
+    //gets the int value of the entered strings and adds each players score
     public void calculateScores()
     {
         int n1p1, n2p1, n3p1, n4p1, n5p1, n6p1, n7p1, n8p1, n9p1;
@@ -259,8 +285,42 @@ public class Front9 extends Base {
         int front9ScoreP4 = n1p4 + n2p4 + n3p4 + n4p4 + n5p4 + n6p4 + n7p4 + n8p4 + n9p4;
 
         scoreList.add(front9ScoreP4);
+
+        Log.i("scorecard", "about to calculate pars");
+        //get pars
+        int playerPar1 = front9ScoreP1 - coursePar;
+        int playerPar2 = front9ScoreP2 - coursePar;
+        int playerPar3 = front9ScoreP3 - coursePar;
+        int playerPar4 = front9ScoreP4 - coursePar;
+
+        parList.add(playerPar1);
+        parList.add(playerPar2);
+        parList.add(playerPar3);
+        parList.add(playerPar4);
+
+
+        Log.i("scorecard", "playerPar1 " + String.valueOf(playerPar1));
+
+        //database stuff
+        Log.i("scorecard", "course name " + courseName);
+        Game game = new Game(date, courseName,
+                             firstPlayerName, secondPlayerName, thirdPlayerName, fourthPlayerName,
+                             front9ScoreP1, front9ScoreP2, front9ScoreP3, front9ScoreP4,
+                             playerPar1, playerPar2, playerPar3, playerPar4);
+        boolean isInserted1;
+        Log.i("scorecard", "before going into myDb.insertGamedata");
+        isInserted1 = myDb.insertGameData(game);
+
+        if (isInserted1)
+            Toast.makeText(Front9.this, "Game Added to Database", Toast.LENGTH_LONG).show();
+        else
+            Toast.makeText(Front9.this, "Error Saving Game to Database", Toast.LENGTH_LONG).show();
+
+
     }
-//shows player names from previous activity
+
+
+    //shows player names from previous activity
     public void showPlayerNames()
     {
         TextView player1Name = (TextView) findViewById(R.id.player1);
@@ -282,6 +342,22 @@ public class Front9 extends Base {
         player2Name.setText(secondPlayerName);
         player3Name.setText(thirdPlayerName);
         player4Name.setText(fourthPlayerName);
+    }
+
+    public void getCourseData()
+    {
+        //getting course data from hashmap
+        Course course = EnterCourse.courseHashMap.get(1);
+
+        courseName = course.courseName;
+        coursePar = course.coursePar;
+    }
+
+    public void showCourseTitle()
+    {
+        TextView front9Title = (TextView) findViewById(R.id.front9Title);
+
+        front9Title.setText(courseName);
     }
 
 }

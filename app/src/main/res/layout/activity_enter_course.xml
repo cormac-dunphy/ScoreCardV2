@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="cormac.activities.EnterCourse">
+
+    <TextView
+        android:id="@+id/enterCourseTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="@string/enterCourseTitle"
+        android:textSize="24sp"/>
+
+    <EditText
+        android:id="@+id/courseNameEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/enterCourseTitle"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="153dp"
+        android:ems="10"
+        android:hint="Course Name"
+        android:inputType="textPersonName"
+        android:text="@string/courseName" />
+
+    <EditText
+        android:id="@+id/courseParEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="97dp"
+        android:ems="10"
+        android:hint="Course Par"
+        android:inputType="number"
+        android:text="@string/coursePar" />
+
+    <EditText
+        android:id="@+id/courseLocationEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/courseParEditText"
+        android:layout_centerHorizontal="true"
+        android:ems="10"
+        android:hint="Course Location"
+        android:inputType="textPersonName"
+        android:text="@string/courseLocation"
+        android:layout_marginBottom="50dp"/>
+
+    <Button
+        android:id="@+id/addCourseToDatabase"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="15dp"
+        android:layout_marginStart="45dp"
+        android:text="@string/addCourseToDB" />
+
+    <Button
+        android:id="@+id/ViewCoursesButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/addCourseToDatabase"
+        android:layout_alignBottom="@+id/addCourseToDatabase"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="52dp"
+        android:text="View Courses" />
+</RelativeLayout>

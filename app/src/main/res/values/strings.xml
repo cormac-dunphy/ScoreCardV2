@@ -1,12 +1,12 @@
 <resources>
     <string name="app_name">ScoreCardV2</string>
-    <string name="playerNamesTitle">Enter Players Names</string>
+    <string name="playerNamesTitle">Enter Player Names</string>
     <string name="player1Name" />
     <string name="player2Name" />
     <string name="player3Name" />
     <string name="player4Name" />
     <string name="startGameButton">Start Game</string>
-    <string name="front9Title">Pitch &amp; Putt</string>
+    <string name="front9Title"></string>
     <string name="holeTitleF9">Hole</string>
     <string name="player1" />
     <string name="player2" />
@@ -69,5 +69,28 @@
     <string name="finalScoreP4" />
     <string name="finishGameButton">Finish Game</string>
     <string name="newGameButton">New Game</string>
+    <string name="GLFirstPlayerName" />
+    <string name="GLSecondPlayerName" />
+    <string name="GLThirdPlayerName" />
+    <string name="GLFourthPlayerName" />
+    <string name="enterCourseTitle">EnterCourse</string>
+    <string name="courseName" />
+    <string name="coursePar" />
+    <string name="courseLocation" />
+    <string name="addCourseToDB">Add Course</string>
+    <string name="GLCourseName">Course</string>
+    <string name="GLPlayerNames">Players</string>
+    <string name="toPlayerNamesButton">Play</string>
+    <string name="vewGamesButton">games</string>
+    <string name="viewCoursesButton">courses</string>
+    <string name="backToMenuButton">back to menu</string>
+    <string name="finalScoreScore">Score:</string>
+    <string name="finalScorePlayers">Players:</string>
+    <string name="finalScorePar">Par:</string>
+    <string name="finalParP1" />
+    <string name="finalParP2" />
+    <string name="finalParP3" />
+    <string name="finalParP4" />
+
 
 </resources>
