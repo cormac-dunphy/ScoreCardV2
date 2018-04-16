@@ -24,24 +24,28 @@ import models.Course;
 import models.Game;
 import models.Player;
 
-public class Front9 extends EnterCourse {
+public class Front9 extends SelectCourse {
 
     //get date
     //Date date = Calendar.getInstance().getTime();
     //String dateString = String.valueOf(date);
 
+    SelectCourse selectCourse = new SelectCourse();
     String date = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
     public String courseName;
     public static List<Integer> scoreList = new ArrayList<>();
     public static List<Integer> parList = new ArrayList<>();
     PlayerNames playerNames = new PlayerNames();
-    EnterCourse enterCourse = new EnterCourse();
+    //EnterCourse enterCourse = new EnterCourse();
     String firstPlayerName, secondPlayerName, thirdPlayerName, fourthPlayerName;
-    public String s1p1,s2p1,s3p1,s4p1,s5p1,s6p1,s7p1,s8p1,s9p1;
-    public String s1p2,s2p2,s3p2,s4p2,s5p2,s6p2,s7p2,s8p2,s9p2;
-    public String s1p3,s2p3,s3p3,s4p3,s5p3,s6p3,s7p3,s8p3,s9p3;
-    public String s1p4,s2p4,s3p4,s4p4,s5p4,s6p4,s7p4,s8p4,s9p4;
+    public String s1p1, s2p1, s3p1, s4p1, s5p1, s6p1, s7p1, s8p1, s9p1;
+    public String s1p2, s2p2, s3p2, s4p2, s5p2, s6p2, s7p2, s8p2, s9p2;
+    public String s1p3, s2p3, s3p3, s4p3, s5p3, s6p3, s7p3, s8p3, s9p3;
+    public String s1p4, s2p4, s3p4, s4p4, s5p4, s6p4, s7p4, s8p4, s9p4;
     public List<String> scores = new ArrayList<>();
+
+    public int coursePar;
+    public String courseParString;
 
     //database
     public DatabaseHelper myDb;
@@ -53,9 +57,9 @@ public class Front9 extends EnterCourse {
         setContentView(R.layout.activity_front9);
         showPlayerNames();
         getCourseData();
-        showCourseTitle();
-        //getCourseData();
+        displayCourseName();
         onFinishGameButtonPressed();
+        //onCourseListPressed();
     }
 
     //when button is pressed get the scores entered and check if any value edit text is null
@@ -68,12 +72,9 @@ public class Front9 extends EnterCourse {
 
                 getScores();
 
-                if (getScores() == false)
-                {
+                if (getScores() == false) {
                     Toast.makeText(Front9.this, "Enter Missing Score(s)", Toast.LENGTH_LONG).show();
-                }
-                else
-                {
+                } else {
                     calculateScores();
                     Intent finishGame = new Intent(Front9.this, FinalScore.class);
                     startActivity(finishGame);
@@ -81,11 +82,21 @@ public class Front9 extends EnterCourse {
             }
         });
     }
-
+/*
+    public void onCourseListPressed() {
+        Button toCourseSelect = (Button) findViewById(R.id.toCourseSelect);
+        toCourseSelect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent toCourseList = new Intent(Front9.this, SelectCourse.class);
+                startActivity(toCourseList);
+            }
+        });
+    }
+*/
     //gets entries from edit texts and puts them into an array then iterates through the array
     //pops up a toast if any element in the array is null
-    public boolean getScores()
-    {
+    public boolean getScores() {
         EditText score1P1 = (EditText) findViewById(R.id.score1P1);
         EditText score2P1 = (EditText) findViewById(R.id.score2P1);
         EditText score3P1 = (EditText) findViewById(R.id.score3P1);
@@ -206,10 +217,8 @@ public class Front9 extends EnterCourse {
         scores.add(s8p4);
         scores.add(s9p4);
 
-        for(int i = 0; i < scores.size(); i++)
-        {
-            if (String.valueOf(scores.get(i)).trim().length() <= 0)
-            {
+        for (int i = 0; i < scores.size(); i++) {
+            if (String.valueOf(scores.get(i)).trim().length() <= 0) {
                 scores.clear();
                 return false;
             }
@@ -218,10 +227,8 @@ public class Front9 extends EnterCourse {
     }
 
 
-
     //gets the int value of the entered strings and adds each players score
-    public void calculateScores()
-    {
+    public void calculateScores() {
         int n1p1, n2p1, n3p1, n4p1, n5p1, n6p1, n7p1, n8p1, n9p1;
 
         n1p1 = Integer.parseInt(s1p1);
@@ -304,9 +311,9 @@ public class Front9 extends EnterCourse {
         //database stuff
         Log.i("scorecard", "course name " + courseName);
         Game game = new Game(date, courseName,
-                             firstPlayerName, secondPlayerName, thirdPlayerName, fourthPlayerName,
-                             front9ScoreP1, front9ScoreP2, front9ScoreP3, front9ScoreP4,
-                             playerPar1, playerPar2, playerPar3, playerPar4);
+                firstPlayerName, secondPlayerName, thirdPlayerName, fourthPlayerName,
+                front9ScoreP1, front9ScoreP2, front9ScoreP3, front9ScoreP4,
+                playerPar1, playerPar2, playerPar3, playerPar4);
         boolean isInserted1;
         Log.i("scorecard", "before going into myDb.insertGamedata");
         isInserted1 = myDb.insertGameData(game);
@@ -321,8 +328,7 @@ public class Front9 extends EnterCourse {
 
 
     //shows player names from previous activity
-    public void showPlayerNames()
-    {
+    public void showPlayerNames() {
         TextView player1Name = (TextView) findViewById(R.id.player1);
         TextView player2Name = (TextView) findViewById(R.id.player2);
         TextView player3Name = (TextView) findViewById(R.id.player3);
@@ -344,17 +350,24 @@ public class Front9 extends EnterCourse {
         player4Name.setText(fourthPlayerName);
     }
 
-    public void getCourseData()
-    {
-        //getting course data from hashmap
-        Course course = EnterCourse.courseHashMap.get(1);
-
-        courseName = course.courseName;
-        coursePar = course.coursePar;
+    public void getCourseData() {
+        courseName = selectCourse.courseDataHashMap.get(1);
+        Log.i("scorecard", "in getCourseData courseName: " + courseName);
+        courseParString = selectCourse.courseDataHashMap.get(2);
+        Log.i("scorecard", "in getCourseData courseParString: " + courseParString);
+        coursePar = Integer.parseInt(courseParString);
+        Log.i("scorecard", "in getCourseData coursePar: " + String.valueOf(coursePar));
     }
 
-    public void showCourseTitle()
-    {
+    /*
+        public void showCourseTitle()
+        {
+            TextView front9Title = (TextView) findViewById(R.id.front9Title);
+
+            front9Title.setText(courseName);
+        }
+    */
+    public void displayCourseName() {
         TextView front9Title = (TextView) findViewById(R.id.front9Title);
 
         front9Title.setText(courseName);

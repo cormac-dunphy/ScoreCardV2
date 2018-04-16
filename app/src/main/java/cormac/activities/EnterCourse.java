@@ -34,44 +34,9 @@ public class EnterCourse extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enter_course);
         myDb = new DatabaseHelper(this);
-        btnviewAll = (Button)findViewById(R.id.ViewCoursesButton);
+        //btnviewAll = (Button)findViewById(R.id.ViewCoursesButton);
         onAddCoursePressed();
-        viewAll();
     }
-
-    public void viewAll() {
-        btnviewAll.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Cursor res = myDb.getCourseData();
-                        if(res.getCount() == 0) {
-                            //show no results message
-                            showMessage("Error", "No Courses Found");
-                            return;
-                        }
-
-                        StringBuffer buffer = new StringBuffer();
-                        while (res.moveToNext()) {
-                            buffer.append("Course Name : "+ res.getString(1)+"\n");
-                            buffer.append("Course Location : "+ res.getString(2)+"\n");
-                            buffer.append("Course Par : "+ String.valueOf(res.getInt(3))+"\n\n");
-                        }
-                        //Show the course data
-                        showMessage("Courses", buffer.toString());
-                    }
-                }
-        );
-    }
-
-    public void showMessage(String title, String Message){
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setCancelable(true);
-        builder.setTitle(title);
-        builder.setMessage(Message);
-        builder.show();
-    }
-
 
     public void onAddCoursePressed()
     {
@@ -123,7 +88,7 @@ public class EnterCourse extends AppCompatActivity {
                 Toast.makeText(EnterCourse.this, "Error Saving Course to Database", Toast.LENGTH_LONG).show();
         }
 
-        Intent toFront9 = new Intent(EnterCourse.this, Front9.class);
+        Intent toFront9 = new Intent(EnterCourse.this, SelectCourse.class);
         startActivity(toFront9);
 
     }

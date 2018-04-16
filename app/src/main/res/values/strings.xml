@@ -73,7 +73,7 @@
     <string name="GLSecondPlayerName" />
     <string name="GLThirdPlayerName" />
     <string name="GLFourthPlayerName" />
-    <string name="enterCourseTitle">EnterCourse</string>
+    <string name="enterCourseTitle">Enter Course Details</string>
     <string name="courseName" />
     <string name="coursePar" />
     <string name="courseLocation" />
@@ -91,6 +91,8 @@
     <string name="finalParP2" />
     <string name="finalParP3" />
     <string name="finalParP4" />
+    <string name="toAddCourseButton">Add A Course</string>
+    <string name="selectCourseTitle">Select A Course</string>
 
 
 </resources>

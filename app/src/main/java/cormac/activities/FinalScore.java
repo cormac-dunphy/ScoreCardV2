@@ -14,6 +14,7 @@ public class FinalScore extends AppCompatActivity {
     PlayerNames playerNames = new PlayerNames();
     Front9 front9 = new Front9();
     EnterCourse enterCourse = new EnterCourse();
+    SelectCourse selectCourse = new SelectCourse();
     String firstPlayerName, secondPlayerName, thirdPlayerName, fourthPlayerName;
     int firstPlayerScore, secondPlayerScore, thirdPlayerScore, fourthPlayerScore;
     int firstPlayerPar, secondPlayerPar, thirdPlayerPar, fourthPlayerPar;
@@ -96,6 +97,7 @@ public class FinalScore extends AppCompatActivity {
                 front9.scoreList.clear();
                 front9.scores.clear();
                 enterCourse.courseHashMap.clear();
+                selectCourse.courseDataHashMap.clear();
                 Intent newGameButtonPressed = new Intent(FinalScore.this, Start.class);
                 startActivity(newGameButtonPressed);
             }

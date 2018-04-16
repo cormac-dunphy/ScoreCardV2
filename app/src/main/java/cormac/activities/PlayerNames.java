@@ -24,7 +24,7 @@ import models.Player;
 
 import static cormac.activities.DatabaseHelper.PLAYER_NAME;
 
-public class PlayerNames extends Base {
+public class PlayerNames extends AppCompatActivity {
 
     //Setting the variables to be used in the class
     public String p1Name, p2Name, p3Name, p4Name;
@@ -38,6 +38,7 @@ public class PlayerNames extends Base {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.i("scorecard", "onCreate: in PlayerNames 1");
         setContentView(R.layout.activity_player_names);
         //Toast.makeText(this, "Before Database Helper",Toast.LENGTH_LONG).show();
         myDb = new DatabaseHelper(this);
@@ -107,11 +108,12 @@ public class PlayerNames extends Base {
                 Toast.makeText(PlayerNames.this, "Error Saving Player Names to Database", Toast.LENGTH_LONG).show();
 
 // End of inserting Player Names to Database
-        }
             //start new activity
-            Intent startGame = new Intent(PlayerNames.this, EnterCourse.class);
-          //  Intent startGame = new Intent(PlayerNames.this, Front9.class);
+            Intent startGame = new Intent(PlayerNames.this, SelectCourse.class);
+            //  Intent startGame = new Intent(PlayerNames.this, Front9.class);
             startActivity(startGame);
+        }
+
         }
 
     }
