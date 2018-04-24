@@ -24,9 +24,6 @@ public class EnterCourse extends AppCompatActivity {
     public String courseName, courseLocation, courseParText;
     public int coursePar;
 
-    public List<String> courseData = new ArrayList<>();
-    Button btnviewAll;
-
     DatabaseHelper myDb;
 
     @Override
@@ -34,13 +31,10 @@ public class EnterCourse extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enter_course);
         myDb = new DatabaseHelper(this);
-        //btnviewAll = (Button)findViewById(R.id.ViewCoursesButton);
         onAddCoursePressed();
     }
 
-    public void onAddCoursePressed()
-    {
-        //Button addCourseButton = (Button) findViewById(R.id.addCourseButton);
+    public void onAddCoursePressed() {
         Button addCourseButton = (Button) findViewById(R.id.addCourseToDatabase);
 
         addCourseButton.setOnClickListener(new View.OnClickListener() {
@@ -51,8 +45,7 @@ public class EnterCourse extends AppCompatActivity {
         });
     }
 
-    public void newCourse()
-    {
+    public void newCourse() {
         EditText courseNameEditText = (EditText) findViewById(R.id.courseNameEditText);
         EditText courseLocationEditText = (EditText) findViewById(R.id.courseLocationEditText);
         EditText courseParEditText = (EditText) findViewById(R.id.courseParEditText);

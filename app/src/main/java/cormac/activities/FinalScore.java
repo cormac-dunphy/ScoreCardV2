@@ -28,29 +28,9 @@ public class FinalScore extends AppCompatActivity {
         showPars();
         onNewGameButtonPressed();
     }
-/*
-    public void showPlayerNames()
-    {
-        TextView finalScoreP1Name = (TextView) findViewById(R.id.finalScoreP1Name);
-        TextView finalScoreP2Name = (TextView) findViewById(R.id.finalScoreP2Name);
-        TextView finalScoreP3Name = (TextView) findViewById(R.id.finalScoreP3Name);
-        TextView finalScoreP4Name = (TextView) findViewById(R.id.finalScoreP4Name);
 
-        firstPlayerName = playerNames.PlayerMap.get("1");
-        secondPlayerName = playerNames.PlayerMap.get("2");
-        thirdPlayerName = playerNames.PlayerMap.get("3");
-        fourthPlayerName = playerNames.PlayerMap.get("4");
-
-        finalScoreP1Name.setText(firstPlayerName);
-        finalScoreP2Name.setText(secondPlayerName);
-        finalScoreP3Name.setText(thirdPlayerName);
-        finalScoreP4Name.setText(fourthPlayerName);
-    }
-*/
-
-//shows each players score
-    public void showScores()
-    {
+    //shows each players score
+    public void showScores() {
         TextView finalScoreP1 = (TextView) findViewById(R.id.finalScoreP1);
         TextView finalScoreP2 = (TextView) findViewById(R.id.finalScoreP2);
         TextView finalScoreP3 = (TextView) findViewById(R.id.finalScoreP3);
@@ -67,9 +47,8 @@ public class FinalScore extends AppCompatActivity {
         finalScoreP4.setText(String.valueOf(fourthPlayerScore));
     }
 
-    //show pars
-    public void showPars()
-    {
+    //shows each players pars
+    public void showPars() {
         TextView finalParP1 = (TextView) findViewById(R.id.finalParP1);
         TextView finalParP2 = (TextView) findViewById(R.id.finalParP2);
         TextView finalParP3 = (TextView) findViewById(R.id.finalParP3);
@@ -86,9 +65,8 @@ public class FinalScore extends AppCompatActivity {
         finalParP4.setText(String.valueOf(fourthPlayerPar));
     }
 
-    //when new game starts clear the data from all hashmaps/arrays
-    public void onNewGameButtonPressed()
-    {
+    //when new game starts clear the data from all data structures
+    public void onNewGameButtonPressed() {
         Button newGameButton = (Button) findViewById(R.id.newGameButton);
         newGameButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,9 +81,9 @@ public class FinalScore extends AppCompatActivity {
             }
         });
     }
-//show players names
-    public void showPlayerNames()
-    {
+
+    //show players names
+    public void showPlayerNames() {
         TextView finalScoreP1Name = (TextView) findViewById(R.id.finalScoreP1Name);
         TextView finalScoreP2Name = (TextView) findViewById(R.id.finalScoreP2Name);
         TextView finalScoreP3Name = (TextView) findViewById(R.id.finalScoreP3Name);

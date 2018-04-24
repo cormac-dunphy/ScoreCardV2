@@ -93,6 +93,9 @@
     <string name="finalParP4" />
     <string name="toAddCourseButton">Add A Course</string>
     <string name="selectCourseTitle">Select A Course</string>
+    <string name="courseNameList">Course Name</string>
+    <string name="courseLocationList">Course Location</string>
+    <string name="courseParList">Course Par</string>
 
 
 </resources>

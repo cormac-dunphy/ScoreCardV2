@@ -26,26 +26,22 @@ import models.Player;
 
 public class Front9 extends SelectCourse {
 
-    //get date
-    //Date date = Calendar.getInstance().getTime();
-    //String dateString = String.valueOf(date);
-
     SelectCourse selectCourse = new SelectCourse();
+    PlayerNames playerNames = new PlayerNames();
+
     String date = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
-    public String courseName;
     public static List<Integer> scoreList = new ArrayList<>();
     public static List<Integer> parList = new ArrayList<>();
-    PlayerNames playerNames = new PlayerNames();
-    //EnterCourse enterCourse = new EnterCourse();
+    public List<String> scores = new ArrayList<>();
+
     String firstPlayerName, secondPlayerName, thirdPlayerName, fourthPlayerName;
     public String s1p1, s2p1, s3p1, s4p1, s5p1, s6p1, s7p1, s8p1, s9p1;
     public String s1p2, s2p2, s3p2, s4p2, s5p2, s6p2, s7p2, s8p2, s9p2;
     public String s1p3, s2p3, s3p3, s4p3, s5p3, s6p3, s7p3, s8p3, s9p3;
     public String s1p4, s2p4, s3p4, s4p4, s5p4, s6p4, s7p4, s8p4, s9p4;
-    public List<String> scores = new ArrayList<>();
-
-    public int coursePar;
     public String courseParString;
+    public int coursePar;
+    public String courseName;
 
     //database
     public DatabaseHelper myDb;
@@ -59,7 +55,6 @@ public class Front9 extends SelectCourse {
         getCourseData();
         displayCourseName();
         onFinishGameButtonPressed();
-        //onCourseListPressed();
     }
 
     //when button is pressed get the scores entered and check if any value edit text is null
@@ -82,18 +77,7 @@ public class Front9 extends SelectCourse {
             }
         });
     }
-/*
-    public void onCourseListPressed() {
-        Button toCourseSelect = (Button) findViewById(R.id.toCourseSelect);
-        toCourseSelect.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent toCourseList = new Intent(Front9.this, SelectCourse.class);
-                startActivity(toCourseList);
-            }
-        });
-    }
-*/
+
     //gets entries from edit texts and puts them into an array then iterates through the array
     //pops up a toast if any element in the array is null
     public boolean getScores() {
@@ -305,7 +289,6 @@ public class Front9 extends SelectCourse {
         parList.add(playerPar3);
         parList.add(playerPar4);
 
-
         Log.i("scorecard", "playerPar1 " + String.valueOf(playerPar1));
 
         //database stuff
@@ -322,8 +305,6 @@ public class Front9 extends SelectCourse {
             Toast.makeText(Front9.this, "Game Added to Database", Toast.LENGTH_LONG).show();
         else
             Toast.makeText(Front9.this, "Error Saving Game to Database", Toast.LENGTH_LONG).show();
-
-
     }
 
 
@@ -350,6 +331,7 @@ public class Front9 extends SelectCourse {
         player4Name.setText(fourthPlayerName);
     }
 
+    //gets course data from HashMap
     public void getCourseData() {
         courseName = selectCourse.courseDataHashMap.get(1);
         Log.i("scorecard", "in getCourseData courseName: " + courseName);
@@ -359,14 +341,6 @@ public class Front9 extends SelectCourse {
         Log.i("scorecard", "in getCourseData coursePar: " + String.valueOf(coursePar));
     }
 
-    /*
-        public void showCourseTitle()
-        {
-            TextView front9Title = (TextView) findViewById(R.id.front9Title);
-
-            front9Title.setText(courseName);
-        }
-    */
     public void displayCourseName() {
         TextView front9Title = (TextView) findViewById(R.id.front9Title);
 

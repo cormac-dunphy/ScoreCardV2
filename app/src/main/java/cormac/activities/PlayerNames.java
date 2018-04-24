@@ -26,7 +26,6 @@ import static cormac.activities.DatabaseHelper.PLAYER_NAME;
 
 public class PlayerNames extends AppCompatActivity {
 
-    //Setting the variables to be used in the class
     public String p1Name, p2Name, p3Name, p4Name;
     public static HashMap<Integer, Player> playerHashMap = new HashMap<>();
     public List<String> playerList = new ArrayList<>();
@@ -38,15 +37,10 @@ public class PlayerNames extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.i("scorecard", "onCreate: in PlayerNames 1");
         setContentView(R.layout.activity_player_names);
-        //Toast.makeText(this, "Before Database Helper",Toast.LENGTH_LONG).show();
         myDb = new DatabaseHelper(this);
-        Log.i("scorecard", "onCreate: in PlayerNames");
-        //Toast.makeText(this, "After Database Helper",Toast.LENGTH_LONG).show();
         onButtonPressed();
     }
-
 
     public void onButtonPressed() {
         Button startGameButton = (Button) findViewById(R.id.startGameButton);
@@ -88,7 +82,7 @@ public class PlayerNames extends AppCompatActivity {
             playerList.add(p2Name);
             playerList.add(p3Name);
             playerList.add(p4Name);
-            //iterating through array list and creating players
+            //iterating through array list and creating player objects
             for (int i = 0; i < playerList.size(); i++) {
                 firstName = String.valueOf(playerList.get(i)).trim();
                 int id = playerHashMap.size() + 1;
@@ -96,24 +90,23 @@ public class PlayerNames extends AppCompatActivity {
                 playerHashMap.put(id, player);
             }
 
-// Insert Player Names to the Database table Player_Names
+            // Insert Player Names to the Database table Player_Names
             boolean isInserted1 = myDb.insertPlayerData(p1Name);
             boolean isInserted2 = myDb.insertPlayerData(p2Name);
             boolean isInserted3 = myDb.insertPlayerData(p3Name);
             boolean isInserted4 = myDb.insertPlayerData(p4Name);
 
-            if (isInserted1 == true && isInserted2 == true && isInserted3 == true && isInserted4 == true)
-                Toast.makeText(PlayerNames.this, "Player Names Added to Database", Toast.LENGTH_LONG).show();
-            else
-                Toast.makeText(PlayerNames.this, "Error Saving Player Names to Database", Toast.LENGTH_LONG).show();
+            //if (isInserted1 == true && isInserted2 == true && isInserted3 == true && isInserted4 == true)
+            //    Toast.makeText(PlayerNames.this, "Player Names Added to Database", Toast.LENGTH_LONG).show();
+            //else
+            //    Toast.makeText(PlayerNames.this, "Error Saving Player Names to Database", Toast.LENGTH_LONG).show();
 
-// End of inserting Player Names to Database
-            //start new activity
+            // End of inserting Player Names to Database. Goes to next page
             Intent startGame = new Intent(PlayerNames.this, SelectCourse.class);
-            //  Intent startGame = new Intent(PlayerNames.this, Front9.class);
+
             startActivity(startGame);
         }
 
-        }
-
     }
+
+}

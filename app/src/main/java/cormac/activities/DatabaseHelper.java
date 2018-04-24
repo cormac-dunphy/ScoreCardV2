@@ -20,16 +20,18 @@ import static android.content.ContentValues.TAG;
 
 
 public class DatabaseHelper extends SQLiteOpenHelper {
+
     public static final String DATABASE_NAME = "scorecard.db";
+    //player table
     public static final String PLAYER_TABLE = "player_table";
+    public static final String PLAYER_NAME = "name";
+    //course table
     public static final String COURSES = "courses";
     public static final String COURSE_NAME = "coursename";
     public static final String COURSE_LOCATION = "courselocation";
     public static final String COURSE_PAR = "coursepar";
-    public static final String COL_1 = "id";
-    public static final String PLAYER_NAME = "name";
+    //game table
     public static final String GAME = "game";
-    public static final String GAME_ID = "gameid";
     public static final String GAME_DATE = "gamedate";
     public static final String GAME_COURSENAME = "coursename";
     public static final String GAME_PLAYER1 = "player1";
@@ -47,69 +49,42 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, 1);
-        //Log.i("scorecard", "DatabaseHelper after super");
         SQLiteDatabase db = this.getWritableDatabase();
-        //Log.i("scorecard", "DatabaseHelper after getWritableDatabse");
         //db.execSQL("drop table " +COURSES);
         //db.execSQL("drop table " +PLAYER_NAME);
-        db.execSQL("create table if not exists " +PLAYER_TABLE+ "(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT)");
-        db.execSQL("create table if not exists " +COURSES+ "(_id INTEGER PRIMARY KEY AUTOINCREMENT, coursename TEXT, courselocation TEXT, coursepar INT)");
-        //Log.i("scorecard", "Courses table created");
         //db.execSQL("drop table " +GAME);
-        db.execSQL("create table if not exists " +GAME+ "(id INTEGER PRIMARY KEY AUTOINCREMENT, gamedate TEXT, coursename TEXT, player1 TEXT, player2 TEXT, player3 TEXT, player4 TEXT, score1 INT, score2 INT, score3 INT, score4 INT, par1 INT, par2 INT, par3 INT, par4 INT)");
-        //Log.i("scorecard", "Game table created");
-        //db.execSQL("insert into " +COURSES+ " (coursename, courselocation, coursepar) values ('Mountain View', 'BallyHale',72)");
-        //db.execSQL("insert into " +COURSES+ " (coursename, courselocation, coursepar) values ('Mount Juliet', 'Kilkenny',72)");
-        //db.execSQL("insert into " +COURSES+ " (coursename, courselocation, coursepar) values ('Carrick GC', 'Tipperary',71)");
-        //db.execSQL("insert into " +TABLE_NAME+ " (name) values ('Ronan')");
-        //db.execSQL("insert into " +TABLE_NAME+ " (name) values ('Heather')");
-        //db.execSQL("insert into " +TABLE_NAME+ " (name) values ('Mark')");
+        db.execSQL("create table if not exists " + PLAYER_TABLE + "(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT)");
+        db.execSQL("create table if not exists " + COURSES + "(_id INTEGER PRIMARY KEY AUTOINCREMENT, coursename TEXT, courselocation TEXT, coursepar INT)");
+        db.execSQL("create table if not exists " + GAME + "(id INTEGER PRIMARY KEY AUTOINCREMENT, gamedate TEXT, coursename TEXT, player1 TEXT, player2 TEXT, player3 TEXT, player4 TEXT, score1 INT, score2 INT, score3 INT, score4 INT, par1 INT, par2 INT, par3 INT, par4 INT)");
 
-//        Log.i("scorecard", "DatabaseHelper after course table creation and insertion");
-
-        //long size = new File(db.getPath()).length();
-        //Log.i("scorecard", "Size " + String.valueOf(size));
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-    //    Log.i("scorecard", "onCreate: in sqllitedatabase scorecard");
-        //db.execSQL("create table if not exists " +TABLE_NAME+ "(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT)");
-        //db.execSQL("insert into " +TABLE_NAME+ " values ('Cormac')");
-  //      Log.i("scorecard", "onCreate: after inserting into table");
-        //Log.d("scorecard", getDatabaseName());
     }
-
-  //  public void createdb(SQLiteDatabase db){
-    //    db.execSQL("create table " +TABLE_NAME+ "(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT)");
-    //  db.execSQL("insert into " +TABLE_NAME+ " values ('Cormac')");
-    // }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-     //   db.execSQL("DROP TABLE IF EXISTS " +TABLE_NAME);
-     //   onCreate(db);
     }
 
-    public boolean insertPlayerData(String name){
+    public boolean insertPlayerData(String name) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(PLAYER_NAME, name);
-        long result = db.insert(PLAYER_TABLE,null,contentValues);
+        long result = db.insert(PLAYER_TABLE, null, contentValues);
         if (result == -1)
             return false;
         else
             return true;
     }
 
-    public boolean insertCourseData(/*String courseName, String courseLocation, int coursePar*/Course course){
+    public boolean insertCourseData(Course course) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COURSE_NAME, course.courseName);
         contentValues.put(COURSE_LOCATION, course.courseLocation);
-        //Log.i("scorecard", "in insert course data: " + String.valueOf(course.coursePar));
         contentValues.put(COURSE_PAR, course.coursePar);
-        long result = db.insert(COURSES,null,contentValues);
+        long result = db.insert(COURSES, null, contentValues);
         if (result == -1)
             return false;
         else
@@ -117,11 +92,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public boolean insertGameData(Game game){
-        //Log.i("scorecard", "in insert game data");
+    public boolean insertGameData(Game game) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        //Log.i("scorecard", "before contentvalues insertgamedata");
         contentValues.put(GAME_DATE, game.gameDate);
         contentValues.put(GAME_COURSENAME, game.courseName);
         contentValues.put(GAME_PLAYER1, game.playerName1);
@@ -136,9 +109,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(GAME_PAR2, game.playerPar2);
         contentValues.put(GAME_PAR3, game.playerPar3);
         contentValues.put(GAME_PAR4, game.playerPar4);
-        //Log.i("scorecard", "playerName1" + game.playerName1);
-        //Log.i("scorecard", "after contentvalues insert game data");
-        long result = db.insert(GAME,null,contentValues);
+
+        long result = db.insert(GAME, null, contentValues);
         if (result == -1)
             return false;
         else
@@ -147,13 +119,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public Cursor getCourseData() {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor res = db.rawQuery("select * from " + COURSES,null);
+        Cursor res = db.rawQuery("select * from " + COURSES, null);
         return res;
     }
 
     public Cursor getGameData() {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor res = db.rawQuery("select * from " + GAME,null);
+        Cursor res = db.rawQuery("select * from " + GAME, null);
         return res;
     }
 }

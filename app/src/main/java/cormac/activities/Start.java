@@ -23,8 +23,7 @@ public class Start extends AppCompatActivity {
         viewCourses();
     }
 
-    public void onPlayButtonPressed()
-    {
+    public void onPlayButtonPressed() {
         Button playButton = (Button) findViewById(R.id.playButton);
 
         playButton.setOnClickListener(new View.OnClickListener() {
@@ -45,29 +44,29 @@ public class Start extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         Cursor res = myDb.getGameData();
-                        if(res.getCount() == 0) {
+                        if (res.getCount() == 0) {
                             //show no results message
-                            showMessageGame("Error", "No Games Found");
+                            showMessageGame("Sorry", "No Games Found");
                             return;
                         }
 
                         StringBuffer buffer = new StringBuffer();
                         while (res.moveToNext()) {
-                            Log.i("scorecard", "Course " + res.getString(2));
-                            buffer.append("Date: "+ res.getString(1)+ " Course: "+res.getString(2)+"\n");
-                            buffer.append(res.getString(3)+ " Score: "+res.getInt(7)+" Par: "+res.getInt(11)+"\n");
-                            buffer.append(res.getString(4)+ " Score: "+res.getInt(8)+" Par: "+res.getInt(12)+"\n");
-                            buffer.append(res.getString(5)+ " Score: "+res.getInt(9)+" Par: "+res.getInt(13)+"\n");
-                            buffer.append(res.getString(6)+ " Score: "+res.getInt(10)+" Par: "+res.getInt(14)+"\n\n");
+                            //shows date and course and all players names, scores and pars
+                            buffer.append("Date: " + res.getString(1) + " Course: " + res.getString(2) + "\n");
+                            buffer.append(res.getString(3) + " Score: " + res.getInt(7) + " Par: " + res.getInt(11) + "\n");
+                            buffer.append(res.getString(4) + " Score: " + res.getInt(8) + " Par: " + res.getInt(12) + "\n");
+                            buffer.append(res.getString(5) + " Score: " + res.getInt(9) + " Par: " + res.getInt(13) + "\n");
+                            buffer.append(res.getString(6) + " Score: " + res.getInt(10) + " Par: " + res.getInt(14) + "\n\n");
                         }
-                        //Show the game data
+                        //Show the title
                         showMessageGame("Previous Games", buffer.toString());
                     }
                 }
         );
     }
 
-    public void showMessageGame(String title, String Message){
+    public void showMessageGame(String title, String Message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setCancelable(true);
         builder.setTitle(title);
@@ -82,17 +81,17 @@ public class Start extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         Cursor res = myDb.getCourseData();
-                        if(res.getCount() == 0) {
+                        if (res.getCount() == 0) {
                             //show no results message
-                            showMessageCourse("Error", "No Courses Found");
+                            showMessageCourse("Sorry", "No Courses Found");
                             return;
                         }
 
                         StringBuffer buffer = new StringBuffer();
                         while (res.moveToNext()) {
-                            buffer.append("Course Name : "+ res.getString(1)+"\n");
-                            buffer.append("Course Location : "+ res.getString(2)+"\n");
-                            buffer.append("Course Par : "+ String.valueOf(res.getInt(3))+"\n\n");
+                            buffer.append("Course Name : " + res.getString(1) + "\n");
+                            buffer.append("Course Location : " + res.getString(2) + "\n");
+                            buffer.append("Course Par : " + String.valueOf(res.getInt(3)) + "\n\n");
                         }
                         //Show the course data
                         showMessageCourse("Courses", buffer.toString());
@@ -101,7 +100,7 @@ public class Start extends AppCompatActivity {
         );
     }
 
-    public void showMessageCourse(String title, String Message){
+    public void showMessageCourse(String title, String Message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setCancelable(true);
         builder.setTitle(title);

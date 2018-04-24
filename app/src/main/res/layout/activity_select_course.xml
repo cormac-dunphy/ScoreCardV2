@@ -4,12 +4,51 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#e8fffc"
     tools:context="cormac.activities.SelectCourse">
+
+    <TextView
+        android:id="@+id/selectCourseTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:textSize="24dp"
+        android:text="@string/selectCourseTitle" />
+
+    <TextView
+        android:id="@+id/courseNameList"
+        android:layout_width="126dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/selectCourseTitle"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="5dp"
+        android:text="@string/courseNameList" />
+
+    <TextView
+        android:id="@+id/courseLocationList"
+        android:layout_width="126dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/selectCourseTitle"
+        android:layout_toRightOf="@id/courseNameList"
+        android:layout_marginBottom="10dp"
+        android:text="@string/courseLocationList" />
+
+    <TextView
+        android:id="@+id/courseParList"
+        android:layout_width="126dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/selectCourseTitle"
+        android:layout_toRightOf="@id/courseLocationList"
+        android:layout_marginBottom="10dp"
+        android:text="@string/courseParList" />
 
     <ListView
         android:id="@+id/courseList"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/courseNameList"
         android:layout_above="@id/toAddCourseButton">
 
     </ListView>
