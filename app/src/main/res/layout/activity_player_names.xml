@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/startbackground"
+    android:background="#e8fffc"
     tools:context="cormac.activities.PlayerNames">
 
     <TextView
@@ -14,7 +14,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:text="@string/playerNamesTitle"
-        android:textColor="@color/whiteColor"
         android:textSize="24sp" />
 
     <EditText
@@ -26,9 +25,7 @@
         android:ems="10"
         android:hint="Player 1"
         android:inputType="textPersonName"
-        android:text="@string/player1Name"
-        android:textColor="@color/whiteColor"
-        android:textColorHint="@color/whiteColor" />
+        android:text="@string/player1Name" />
 
     <EditText
         android:id="@+id/player2Name"
@@ -40,9 +37,7 @@
         android:ems="10"
         android:hint="Player 2"
         android:inputType="textPersonName"
-        android:text="@string/player2Name"
-        android:textColor="@color/whiteColor"
-        android:textColorHint="@color/whiteColor" />
+        android:text="@string/player2Name" />
 
     <EditText
         android:id="@+id/player3Name"
@@ -54,9 +49,7 @@
         android:ems="10"
         android:hint="Player 3"
         android:inputType="textPersonName"
-        android:text="@string/player3Name"
-        android:textColor="@color/whiteColor"
-        android:textColorHint="@color/whiteColor" />
+        android:text="@string/player3Name" />
 
     <EditText
         android:id="@+id/player4Name"
@@ -68,9 +61,7 @@
         android:ems="10"
         android:hint="Player 4"
         android:inputType="textPersonName"
-        android:text="@string/player4Name"
-        android:textColor="@color/whiteColor"
-        android:textColorHint="@color/whiteColor" />
+        android:text="@string/player4Name" />
 
     <Button
         android:id="@+id/startGameButton"
@@ -79,7 +70,6 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="15dp"
-
         android:backgroundTint="@color/whiteColor"
         android:text="@string/startGameButton" />
 

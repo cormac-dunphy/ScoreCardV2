@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/startbackground"
+    android:background="#e8fffc"
     tools:context="cormac.activities.EnterCourse">
 
     <TextView
@@ -15,7 +15,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:text="@string/enterCourseTitle"
-        android:textColor="@android:color/white"
         android:textSize="24sp" />
 
     <EditText
@@ -29,9 +28,7 @@
         android:ems="10"
         android:hint="Course Name"
         android:inputType="textPersonName"
-        android:text="@string/courseName"
-        android:textColor="@android:color/white"
-        android:textColorHint="@android:color/white" />
+        android:text="@string/courseName" />
 
     <EditText
         android:id="@+id/courseParEditText"
@@ -43,9 +40,7 @@
         android:ems="10"
         android:hint="Course Par"
         android:inputType="number"
-        android:text="@string/coursePar"
-        android:textColor="@android:color/white"
-        android:textColorHint="@android:color/white" />
+        android:text="@string/coursePar" />
 
     <EditText
         android:id="@+id/courseLocationEditText"
@@ -57,9 +52,7 @@
         android:ems="10"
         android:hint="Course Location"
         android:inputType="textPersonName"
-        android:text="@string/courseLocation"
-        android:textColor="@android:color/white"
-        android:textColorHint="@android:color/white" />
+        android:text="@string/courseLocation" />
 
     <Button
         android:id="@+id/addCourseToDatabase"
