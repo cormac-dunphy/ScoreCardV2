@@ -51,6 +51,7 @@ public class SelectCourse extends AppCompatActivity {
         courseRowSelected();
     }
 
+    //pop up for making sure user wants to delete course
     private AlertDialog AskOption()
     {
         AlertDialog myQuittingDialogBox =new AlertDialog.Builder(this)
@@ -92,6 +93,7 @@ public class SelectCourse extends AppCompatActivity {
 
     }
 
+    //delete course from database using long click
     public void deleteCourseRow()
     {
         ListView lvItems = (ListView) findViewById(R.id.courseList);
@@ -121,21 +123,6 @@ public class SelectCourse extends AppCompatActivity {
         CourseCursorAdapter CourseAdapter = new CourseCursorAdapter(this, courseCursor);
         // Attach cursor adapter to the ListView
         lvItems.setAdapter(CourseAdapter);
-/*
-        lvItems.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                selectedCourseName = ((TextView) view.findViewById(R.id.listCourseName)).getText().toString();
-                selectedCourseParString = ((TextView) view.findViewById(R.id.listCoursePar)).getText().toString();
-
-                courseDataHashMap.put(1, selectedCourseName);
-                courseDataHashMap.put(2, selectedCourseParString);
-
-                Intent toFront9 = new Intent(SelectCourse.this, Front9.class);
-                startActivity(toFront9);
-            }
-        });
-*/
     }
 
     public void courseRowSelected()
